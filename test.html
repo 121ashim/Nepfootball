@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Underline Hover Preview</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+  }
+
+  nav {
+    display: flex;
+    gap: 30px;
+  }
+
+  .nav-item {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    padding-bottom: 4px;
+  }
+
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: black;
+    transition: width 0.3s ease;
+  }
+
+  .nav-item:hover::after {
+    width: 100%;
+  }
+</style>
+</head>
+
+<body>
+  <nav>
+    <a href="#" class="nav-item">Home</a>
+    <a href="#" class="nav-item">About</a>
+    <a href="#" class="nav-item">Services</a>
+    <a href="#" class="nav-item">Contact</a>
+  </nav>
+</body>
+</html>

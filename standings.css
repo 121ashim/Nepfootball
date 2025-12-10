@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --navbar-height: 60px;
+    --nav-bg: rgb(252, 249, 249);
+    --nav-text: black;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: var(--navbar-height);
+    background: var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#logo img {
+    height: var(--navbar-height);
+    width: var(--navbar-height);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+#navbar ul li {
+    margin-left: 15px;
+}
+
+#navbar ul li a {
+    color: var(--nav-text);
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    background: var(--nav-text);
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ----- LEAGUE BOXES ----- */
+
+#league-container {
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.league-box {
+    width: 30%;
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.league-box:hover {
+    transform: scale(1.05);
+   
+     transform: translateY(-5px);
+     border-color: #1e90ff;          
+    box-shadow: 0 0 15px black;
+
+}
+
+.league-box img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.league-box h3 {
+    margin-top: 10px;
+    font-size: 1.4rem;
+}
+
+/* ----- TABLE ----- */
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+thead {
+    background: #222;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f3f3f3;
+}
+
+img {
+    vertical-align: middle;
+    margin-right: 5px;
+    
+}

@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+:root {
+    --navbar-height: 60px;
+    --nav-bg:rgb(252, 249, 249);
+    --nav-text: black;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: var(--navbar-height);
+    background: var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#logo {
+     margin-right: 20px;
+    border: none;      
+    padding: 0;         
+    border-radius: 50%;  
+    overflow: hidden;  
+}
+
+#logo img {
+    height: var(--navbar-height);
+       height: var(--navbar-height);
+    width: var(--navbar-height);
+    object-fit: cover;           
+    border-radius: 50%; 
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+    color: blak;
+}
+
+#navbar ul li {
+    margin-left: 15px;
+}
+
+#navbar ul li a {
+    color: var(--nav-text);
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    background: var(--nav-text);
+       color: #c4a4a4;
+}
+
+
+.title {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: #222;
+    margin-top: 0.67em; /* Default browser margin, can be reset or adjusted */
+  margin-bottom: 0.67em;
+  padding: 10px 0; /* Add internal padding */
+
+  /* Decorative Elements */
+  border-bottom: 2px solid #ccc; /* Subtle separator line */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+   @media (max-width: 768px) {
+    font-size: 1.8em;
+    text-align: left;
+}
+}
+
+
+#loadPLSchedule {
+    display: block;
+    margin: 0 auto 25px auto;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    background: black;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#loadPLSchedule:hover {
+   background: rgb(43, 42, 42);
+}
+
+/* MATCH CONTAINER */
+#pl-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* ---------------- MATCH CARD ---------------- */
+.match-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.25s ease-in-out;
+    border: 2px solid #e0e0e0; 
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+     border-color: black;          
+    box-shadow: 0 0 15px rgb(51, 51, 51);
+}
+
+/* Team Section */
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+.team span {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* VS text */
+.vs {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Match info */
+.match-info {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 15px;
+    color: #444;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Status styling */
+.status {
+    font-weight: bold;
+    color: #1e90ff;
+}
+
+.status.Live {
+    color: red;
+}
+
+.status.Finished {
+    color: green;
+}
+
+.score {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+
+@media (max-width: 600px) {
+    nav ul {
+        gap: 15px;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    #loadPLSchedule {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}

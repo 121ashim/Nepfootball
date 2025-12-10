@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+:root {
+    --navbar-height: 60px;
+    --nav-bg: rgb(252, 249, 249);
+    --nav-text: black;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: var(--navbar-height);
+    background:var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#logo {
+     margin-right: 20px;
+    border: none;      
+    padding: 0;         
+    border-radius: 50%;  
+    overflow: hidden;  
+}
+
+#logo img {
+    height: var(--navbar-height);
+       height: var(--navbar-height);
+    width: var(--navbar-height);
+    object-fit: cover;           
+    border-radius: 50%; 
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+#navbar ul li {
+    margin-left: 15px;
+}
+
+#navbar ul li a {
+    color: var(--nav-text);
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    background: var(--nav-text);
+    color: #c4a4a4;
+}
+
+.title {
+      /* Font Styling */
+  font-family: 'Arial', sans-serif; /* Choose a readable font */
+  font-size: 2.5em; /* Adjust size relative to base font size */
+  font-weight: bold; /* Often default for H1, but can be adjusted */
+  color: #333; /* Darker color for good contrast */
+  text-align: center; /* Center alignment for titles */
+  text-transform: uppercase; /* Optional: for a strong visual impact */
+  letter-spacing: 0.05em; /* Optional: adjust spacing between letters */
+
+
+  margin-top: 0.67em; 
+  margin-bottom: 0.67em;
+  padding: 10px 0;
+
+  border-bottom: 2px solid #ccc; 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+
+
+  @media (max-width: 768px) {
+    font-size: 1.8em;
+    text-align: left;
+}
+}
+#loadFixtures {
+    padding: 12px 25px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+}
+
+#loadFixtures:hover {
+    background: rgb(43, 42, 42);
+}
+
+#fixtures-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.match-card {
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+   border: 2px solid #e5e5e5;
+}
+
+.match-card:hover {
+    border-color: #0a66c2;
+    transform: scale(1.01);
+    transition: 0.2s ease-in-out;
+}
+
+
+.team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+}
+
+.team img {
+    width: 40px;
+    height: 40px;
+}
+
+.vs {
+    font-size: 20px;
+    font-weight: bold;
+    width: 10%;
+    text-align: center;
+}
+
+.score {
+    font-size: 26px;
+    font-weight: bold;
+    width: 15%;
+    text-align: center;
+}
+
+.match-info {
+    text-align: right;
+    width: 25%;
+}
+
+.status {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.FINISHED { background: #28a745; }
+.SCHEDULED { background: #007bff; }
+.IN_PLAY { background: #dc3545; }
+.PAUSED { background: #ffc107; color:black; }

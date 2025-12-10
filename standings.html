@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football League Standings</title>
+    <link rel="stylesheet" href="standings.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div id="logo">
+            <a href="index.html">
+                <img src="images/ball-in-football-logo-in-free-vector.jpg">
+            </a>
+        </div>
+        <ul>
+            <li class="item"><a href="index.html">Home</a></li>
+            <li class="item"><a href="standings.html">Standings</a></li>
+            <li class="item"><a href="fixtures.html">Fixtures</a></li>
+            <li class="item"><a href="schedule.html">Schedule</a></li>
+            <li class="item"><a href="contact.html">contact</a></li>
+            
+        </ul>
+    </nav>
+
+    <h1>Select a League</h1>
+
+    <div id="league-container">
+        <div class="league-box" onclick="loadStandings('PL')">
+            <img src="images/Premier_League_Logo.svg (1).png">
+            <h3>Premier League</h3>
+        </div>
+
+        <div class="league-box" onclick="loadStandings('PD')">
+            <img src="images/LaLiga_logo_2023.svg.png">
+            <h3>La Liga</h3>
+        </div>
+
+        <div class="league-box" onclick="loadStandings('SA')">
+            <img src="images/images.jpg">
+            <h3>Serie A</h3>
+        </div>
+    </div>
+
+    
+
+    <table id="standings-table">
+        <thead>
+            <tr>
+                <th>Pos</th>
+                <th>Team</th>
+                <th>Played</th>
+                <th>Won</th>
+                <th>Draw</th>
+                <th>Lost</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="standing.js"></script>
+</body>
+</html>
