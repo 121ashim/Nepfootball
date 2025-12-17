@@ -1,98 +1,83 @@
 const express = require("express");
 const fetch = require("node-fetch");
-console.log(">>> SERVER.JS STARTED FROM THIS FILE <<<");
-
 const cors = require("cors");
+const path = require("path");
+
+console.log(">>> SERVER.JS STARTED FROM THIS FILE <<<");
 
 const app = express();
 app.use(cors());
 
+// ✅ Serve frontend files from ROOT
+app.use(express.static(__dirname));
+
+// ✅ Serve homepage
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// ---------------- API KEY ----------------
 const API_KEY = "a31ab29888a84515af8deeddb025b8ae";
 
-//  ALL football FIXTURES 
+// ---------- ROUTES ----------
+
+// ALL football FIXTURES
 app.get("/fixtures", async (req, res) => {
-    try {
-        const response = await fetch("https://api.football-data.org/v4/matches", {
-            headers: { "X-Auth-Token": API_KEY }
-        });
-
-        const data = await response.json();
-        res.json(data);
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Failed to fetch fixtures" });
-    }
+  try {
+    const response = await fetch("https://api.football-data.org/v4/matches", {
+      headers: { "X-Auth-Token": API_KEY }
+    });
+    const data = await response.json();
+    res.json(data);
+  } catch {
+    res.status(500).json({ error: "Failed to fetch fixtures" });
+  }
 });
 
-// pl standings
+// PL standings
 app.get("/standings", async (req, res) => {
-    try {
-        const response = await fetch(
-            "https://api.football-data.org/v4/competitions/PL/standings",
-            {
-                headers: { "X-Auth-Token": API_KEY }
-            }
-        );
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            console.log("API Response:", errorData);
-            return res.status(response.status).json(errorData);
-        }
-
-        const data = await response.json();
-        res.json(data);
-    } catch (error) {
-        console.error("Standings Error:", error);
-        res.status(500).json({ error: error.message });
-    }
+  try {
+    const response = await fetch(
+      "https://api.football-data.org/v4/competitions/PL/standings",
+      { headers: { "X-Auth-Token": API_KEY } }
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
-// multiple league standings
-
+// Multiple league standings
 app.get("/standings/:league", async (req, res) => {
-    const league = req.params.league; // PL, PD, SA
-
-    try {
-        const response = await fetch(
-            `https://api.football-data.org/v4/competitions/${league}/standings`,
-            { headers: { "X-Auth-Token": API_KEY } }
-        );
-
-        if (!response.ok) {
-            const data = await response.json();
-            return res.status(response.status).json(data);
-        }
-
-        const data = await response.json();
-        res.json(data);
-
-    } catch (error) {
-        console.error("Standings Error:", error);
-        res.status(500).json({ error: "Failed to fetch standings" });
-    }
+  try {
+    const response = await fetch(
+      `https://api.football-data.org/v4/competitions/${req.params.league}/standings`,
+      { headers: { "X-Auth-Token": API_KEY } }
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch {
+    res.status(500).json({ error: "Failed to fetch standings" });
+  }
 });
 
-// pl schedule
+// PL matches
 app.get("/pl-matches", async (req, res) => {
-    try {
-        const response = await fetch(
-            "https://api.football-data.org/v4/competitions/PL/matches",
-            { headers: { "X-Auth-Token": API_KEY } }
-        );
-
-        const data = await response.json();
-        res.json(data);
-    } catch (error) {
-        console.error("PL Matches Error:", error);
-        res.status(500).json({ error: "Failed to fetch PL matches" });
-    }
+  try {
+    const response = await fetch(
+      "https://api.football-data.org/v4/competitions/PL/matches",
+      { headers: { "X-Auth-Token": API_KEY } }
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch {
+    res.status(500).json({ error: "Failed to fetch PL matches" });
+  }
 });
-
 
 // ---------- SERVER ----------
-app.listen(5000, () => {
-    console.log("Backend running at http://localhost:5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log("Backend running on port", PORT);
 });
- 
