@@ -1,86 +1,73 @@
-const API_KEY = "b5207fb060a54fe0ad5200ae697e4b44"; // news APi le deko api
-const url = "https://newsapi.org/v2/everything?q=";// news api bata leko 
+// ✅ Call YOUR backend (not NewsAPI directly)
+const url = "/news/";
 
-window.addEventListener("load", () => fetchNews("soccer"));// website load huna ko lagi eventlistener suru ma weather section dekhauna wihtout seaching
+// Load default news on page load
+window.addEventListener("load", () => {
+    fetchNews("soccer");
+});
 
+// Reload page
 function reload() {
     window.location.reload();
-    
 }
 
+// Fetch news from backend
 async function fetchNews(query) {
-    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
-    const data = await res.json();
-    bindData(data.articles);//aako data articles ma hunxa
+    try {
+        const res = await fetch(`${url}${query}`);
+        const data = await res.json();
+        bindData(data.articles);
+    } catch (error) {
+        console.error("News fetch error:", error);
+    }
 }
 
-function bindData(articles) {// teslai bind garni
+// Bind news cards
+function bindData(articles) {
     const cardsContainer = document.getElementById("cards-container");
     const newsCardTemplate = document.getElementById("template-news-card");
 
-    cardsContainer.innerHTML = "";//yo garena vane data aako aai garxa thapidai janxa
+    cardsContainer.innerHTML = "";
+
+    if (!articles) return;
 
     articles.forEach((article) => {
-        if (!article.urlToImage) return;// photo navako image lai return gardai
+        if (!article.urlToImage) return;
+
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, article);
         cardsContainer.appendChild(cardClone);
     });
 }
-   
-function fillDataInCard(cardClone, article) {// html ko id bata login milaudai
 
+// Fill card data
+function fillDataInCard(cardClone, article) {
     const newsImg = cardClone.querySelector("#news-img");
     const newsTitle = cardClone.querySelector("#news-title");
     const newsSource = cardClone.querySelector("#news-source");
     const newsDesc = cardClone.querySelector("#news-desc");
 
     newsImg.src = article.urlToImage;
-    newsTitle.innerHTML = article.title;
-    newsDesc.innerHTML = article.description;
+    newsTitle.innerText = article.title;
+    newsDesc.innerText = article.description || "";
 
     const date = new Date(article.publishedAt).toLocaleString("en-US", {
         timeZone: "Asia/Kathmandu",
     });
 
-    newsSource.innerHTML = `${article.source.name} · ${date}`;
-// article lai click garda tyo original link ma lanxa
+    newsSource.innerText = `${article.source.name} · ${date}`;
+
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
     });
-    
 }
 
-
-
-//  references dinalai to the search button and search text input elements.
+// Search functionality
 const searchButton = document.getElementById("search-button");
 const searchText = document.getElementById("search-text");
-// event listener add gareko to search button
+
 searchButton.addEventListener("click", () => {
-    //search text input bata search query lina
-    const query = searchText.value;
-    // edi kei query xaina vane reuturn gardini
+    const query = searchText.value.trim();
     if (!query) return;
-    // news lai fetch garni to search query
     fetchNews(query);
-    curSelectedNav?.classList.remove("active");
-    curSelectedNav = null;
-
-});
-
-// -------- NEWS API (Backend Proxy) --------
-const NEWS_API_KEY = "b5207fb060a54fe0ad5200ae697e4b44";
-
-app.get("/news/:query", async (req, res) => {
-  try {
-    const query = req.params.query;
-    const response = await fetch(
-      `https://newsapi.org/v2/everything?q=${query}&apiKey=${NEWS_API_KEY}`
-    );
-    const data = await response.json();
-    res.json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch news" });
-  }
 });
