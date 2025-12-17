@@ -3,7 +3,7 @@ document.getElementById("loadFixtures").addEventListener("click", loadFixtures);
 
 async function loadFixtures() {
     try {
-        const response = await fetch("http://localhost:5000/fixtures");
+        const response = await fetch("/fixtures");
         const data = await response.json();
 
         const matches = data.matches;
@@ -54,3 +54,4 @@ async function loadFixtures() {
         alert("Failed to load fixtures!");
     }
 }
+
