@@ -81,3 +81,19 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Backend running on port", PORT);
 });
+// -------- NEWS API (Backend Proxy) --------
+const NEWS_API_KEY = "b5207fb060a54fe0ad5200ae697e4b44";
+
+app.get("/news/:query", async (req, res) => {
+  try {
+    const query = req.params.query;
+    const response = await fetch(
+      `https://newsapi.org/v2/everything?q=${query}&apiKey=${NEWS_API_KEY}`
+    );
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch news" });
+  }
+});
+
