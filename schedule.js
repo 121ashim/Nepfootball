@@ -2,7 +2,8 @@ document.getElementById("loadPLSchedule").addEventListener("click", loadPLSchedu
 
 async function loadPLSchedule() {
     try {
-        const response = await fetch("http://localhost:5000/pl-matches");
+        const response = await fetch("/pl-matches");
+
         const data = await response.json();
 
         const matches = data.matches;
@@ -78,3 +79,4 @@ async function loadPLSchedule() {
         alert("Failed to load Premier League schedule");
     }
 }
+
