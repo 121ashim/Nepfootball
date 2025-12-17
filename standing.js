@@ -1,6 +1,7 @@
 async function loadStandings(leagueCode) {
     try {
-        const response = await fetch(`/${leagueCode}`);
+       const response = await fetch(`/standings/${leagueCode}`);
+
         const data = await response.json();
 
         const tableBody = document.querySelector("#standings-table tbody");
@@ -35,4 +36,5 @@ async function loadStandings(leagueCode) {
         alert("Failed to load standings!");
     }
 }
+
 
