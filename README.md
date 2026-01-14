@@ -3,5 +3,5 @@ tech used:
 html
 css
 js
-node js
+node js (backend)
 
