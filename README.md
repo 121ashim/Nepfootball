@@ -1,1 +1,7 @@
-a  football website 
+a  football website hoseted on onrender.com 
+tech used:
+html
+css
+js
+node js
+
