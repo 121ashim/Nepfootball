@@ -3,7 +3,7 @@ tech used:
 html,
 css,
 js,
-node js (backend)aa
+node js (backend)
 
 
 
