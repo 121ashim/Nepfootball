@@ -6,5 +6,5 @@ js,
 node js (backend)
 
 
-aergae
+aerg
 
