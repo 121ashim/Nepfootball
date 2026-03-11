@@ -4,8 +4,6 @@ html,
 css,
 js,
 node js (backend)
-this is the 
-
 
 
 
