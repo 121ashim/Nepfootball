@@ -1,8 +1,8 @@
 a  football website hoseted on onrender.com 
 tech used:
-html,
-css,
-js,
+html
+css
+js
 node js (backend)
 
 
